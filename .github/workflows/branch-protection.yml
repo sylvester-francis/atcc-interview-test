@@ -1,0 +1,29 @@
+name: Branch Protection
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  enforce-codeowners:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check if CODEOWNERS exists
+        run: |
+          if [ ! -f .github/CODEOWNERS ]; then
+            echo "CODEOWNERS file is missing!"
+            exit 1
+          fi
+
+      - name: Validate push to main (only for direct pushes)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          echo "Direct pushes to main branch detected"
+          echo "This should only be allowed through pull requests with proper review"
+          # This will fail the workflow for direct pushes to main
+          exit 1
