@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title><%= title || 'ATCC - Association of Tamilnadu Canadian Community' %></title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#FF6F0F">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="ATCC">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="<%= typeof description !== 'undefined' ? description : 'Join the Association of Tamilnadu Canadian Community (ATCC) - Building unity across Canada with 140+ volunteers, cultural events, networking opportunities, and community support for Tamil Canadians.' %>">
+    <meta name="keywords" content="<%= typeof keywords !== 'undefined' ? keywords : 'Tamil Canadian community, ATCC, Tamil culture Canada, Tamil events, Tamil networking, Canadian Tamil association, Tamil volunteers, Tamil heritage Canada, Tamil community Toronto, Tamil newcomers Canada' %>">
+    <meta name="author" content="Association of Tamilnadu Canadian Community (ATCC)">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="en-CA">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<%= title || 'ATCC - Association of Tamilnadu Canadian Community' %>">
+    <meta property="og:description" content="<%= typeof description !== 'undefined' ? description : 'Building unity across Canada with 140+ volunteers, cultural events, networking opportunities, and community support for Tamil Canadians.' %>">
+    <meta property="og:url" content="<%= typeof url !== 'undefined' ? url : 'https://atcccanada.org' %>">
+    <meta property="og:site_name" content="ATCC - Association of Tamilnadu Canadian Community">
+    <meta property="og:image" content="<%= typeof ogImage !== 'undefined' ? ogImage : '/img/DSC_6688-banner.jpeg' %>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_CA">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= title || 'ATCC - Association of Tamilnadu Canadian Community' %>">
+    <meta name="twitter:description" content="<%= typeof description !== 'undefined' ? description : 'Building unity across Canada with 140+ volunteers, cultural events, networking opportunities, and community support for Tamil Canadians.' %>">
+    <meta name="twitter:image" content="<%= typeof ogImage !== 'undefined' ? ogImage : '/img/DSC_6688-banner.jpeg' %>">
+    <meta name="twitter:site" content="@ATCCCanada">
+    
+    <!-- Additional SEO Tags -->
+    <link rel="canonical" href="<%= typeof url !== 'undefined' ? url : 'https://atcccanada.org' %>">
+    <meta name="geo.region" content="CA">
+    <meta name="geo.placename" content="Canada">
+    <meta name="ICBM" content="43.6532, -79.3832">
+
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Association of Tamilnadu Canadian Community",
+        "alternateName": "ATCC",
+        "url": "https://atcccanada.org",
+        "logo": "https://atcccanada.org/img/logo.png",
+        "description": "Building unity across Canada with 140+ volunteers, cultural events, networking opportunities, and community support for Tamil Canadians.",
+        "foundingDate": "2023",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "Canada",
+            "addressRegion": "Multiple Provinces"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "General Inquiries",
+            "email": "info@atcccanada.org"
+        },
+        "sameAs": [
+            "https://www.facebook.com/ATCCCanada",
+            "https://www.instagram.com/atcccanada",
+            "https://www.youtube.com/@ATCCCanada",
+            "https://www.linkedin.com/company/atcccanada"
+        ],
+        "memberOf": {
+            "@type": "Organization",
+            "name": "Tamil Canadian Community"
+        },
+        "areaServed": [
+            "Canada",
+            "Toronto",
+            "Ontario",
+            "British Columbia",
+            "Alberta",
+            "Quebec",
+            "Manitoba",
+            "Saskatchewan",
+            "Nova Scotia",
+            "New Brunswick",
+            "Prince Edward Island",
+            "Newfoundland and Labrador"
+        ],
+        "keywords": "Tamil Canadian community, cultural events, networking, volunteers, newcomer support, Tamil heritage"
+    }
+    </script>
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status" aria-label="Loading"></div>
+    </div>
+    <!-- Spinner End -->

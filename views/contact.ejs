@@ -1,0 +1,384 @@
+<%- include('partials/header', { title: 'ATCC - Contact Us' }) %>
+
+<%- include('partials/navbar', { page: 'contact' }) %>
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center">
+        <h1 class="display-4 text-white animated slideInDown mb-4">Contact Us</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                <li class="breadcrumb-item text-primary active" aria-current="page">Contact Us</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Contact Info Section Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 mb-5">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="bg-light rounded p-4 text-center h-100">
+                    <div class="btn-lg-square bg-primary text-white rounded-circle mx-auto mb-4">
+                        <i class="fa fa-envelope fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Email Us</h4>
+                    <p class="mb-2">For general inquiries and information</p>
+                    <a href="mailto:info@atcccanada.ca" class="text-primary fw-bold">info@atcccanada.ca</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="bg-light rounded p-4 text-center h-100">
+                    <div class="btn-lg-square bg-primary text-white rounded-circle mx-auto mb-4">
+                        <i class="fa fa-users fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Join Our Community</h4>
+                    <p class="mb-2">Connect with 5,000+ Tamil Canadians</p>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="bg-light rounded p-4 text-center h-100">
+                    <div class="btn-lg-square bg-primary text-white rounded-circle mx-auto mb-4">
+                        <i class="fa fa-map-marker-alt fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Our Reach</h4>
+                    <p class="mb-2">Active across all Canadian provinces</p>
+                    <span class="text-primary fw-bold">Coast to Coast</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact Info Section End -->
+
+<!-- Contact Forms Section Start -->
+<div class="container-xxl py-5 bg-light">
+    <div class="container">
+        <div class="row g-5">
+            <!-- General Contact Form -->
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="bg-white rounded p-5 shadow-sm h-100">
+                    <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">General Inquiry</div>
+                    <h3 class="mb-4">Send us a Message</h3>
+                    <p class="mb-4">Have questions about our community, events, or services? We'd love to hear from you!</p>
+                    
+                    <% if (typeof success !== 'undefined' && success) { %>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <%= typeof message !== 'undefined' ? message : 'Thank you for your message! We will get back to you soon.' %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    <% } %>
+                    
+                    <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            <ul class="mb-0">
+                                <% errors.forEach(error => { %>
+                                    <li><%= error.msg %></li>
+                                <% }) %>
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    <% } %>
+                    
+                    <form action="/contact/submit" method="POST">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="contactName" name="name" 
+                                           placeholder="Your Name" value="<%= typeof formData !== 'undefined' ? formData.name || '' : '' %>" required>
+                                    <label for="contactName">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="contactEmail" name="email" 
+                                           placeholder="Your Email" value="<%= typeof formData !== 'undefined' ? formData.email || '' : '' %>" required>
+                                    <label for="contactEmail">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-floating">
+                                    <input type="tel" class="form-control" id="contactPhone" name="phone" 
+                                           placeholder="Phone Number" value="<%= typeof formData !== 'undefined' ? formData.phone || '' : '' %>">
+                                    <label for="contactPhone">Phone Number (Optional)</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="contactSubject" name="subject" 
+                                           placeholder="Subject" value="<%= typeof formData !== 'undefined' ? formData.subject || '' : '' %>">
+                                    <label for="contactSubject">Subject (Optional)</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Your message here" id="contactMessage" 
+                                              name="message" style="height: 120px" required><%= typeof formData !== 'undefined' ? formData.message || '' : '' %></textarea>
+                                    <label for="contactMessage">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary py-3 px-4" type="submit">
+                                    Send Message
+                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Volunteer Registration Form -->
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="bg-white rounded p-5 shadow-sm h-100">
+                    <div class="d-inline-block rounded-pill bg-primary text-white py-1 px-3 mb-3">Volunteer Registration</div>
+                    <h3 class="mb-4">Join Our Team</h3>
+                    <p class="mb-4">Ready to make a difference? Join our 140+ volunteers and help build a stronger Tamil community!</p>
+                    
+                    <% if (typeof volunteerSuccess !== 'undefined' && volunteerSuccess) { %>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <%= typeof volunteerMessage !== 'undefined' ? volunteerMessage : 'Thank you for your interest in volunteering! We will contact you soon.' %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    <% } %>
+                    
+                    <% if (typeof volunteerErrors !== 'undefined' && volunteerErrors.length > 0) { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            <ul class="mb-0">
+                                <% volunteerErrors.forEach(error => { %>
+                                    <li><%= error.msg %></li>
+                                <% }) %>
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    <% } %>
+                    
+                    <form action="/contact/volunteer" method="POST">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="volunteerFirstName" name="firstName" 
+                                           placeholder="First Name" value="<%= typeof volunteerFormData !== 'undefined' ? volunteerFormData.firstName || '' : '' %>" required>
+                                    <label for="volunteerFirstName">First Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="volunteerLastName" name="lastName" 
+                                           placeholder="Last Name" value="<%= typeof volunteerFormData !== 'undefined' ? volunteerFormData.lastName || '' : '' %>" required>
+                                    <label for="volunteerLastName">Last Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="volunteerEmail" name="email" 
+                                           placeholder="Email Address" value="<%= typeof volunteerFormData !== 'undefined' ? volunteerFormData.email || '' : '' %>" required>
+                                    <label for="volunteerEmail">Email Address</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="tel" class="form-control" id="volunteerPhone" name="phone" 
+                                           placeholder="Phone Number" value="<%= typeof volunteerFormData !== 'undefined' ? volunteerFormData.phone || '' : '' %>">
+                                    <label for="volunteerPhone">Phone Number (Optional)</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="volunteerSkills" name="skills" 
+                                              placeholder="Skills and Experience" style="height: 80px"><%= typeof volunteerFormData !== 'undefined' ? volunteerFormData.skills || '' : '' %></textarea>
+                                    <label for="volunteerSkills">Skills and Experience (Optional)</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="volunteerAvailability" name="availability" 
+                                              placeholder="Availability" style="height: 60px"><%= typeof volunteerFormData !== 'undefined' ? volunteerFormData.availability || '' : '' %></textarea>
+                                    <label for="volunteerAvailability">Availability (Optional)</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="volunteerExperience" name="experience" 
+                                              placeholder="Previous volunteer experience" style="height: 80px"><%= typeof volunteerFormData !== 'undefined' ? volunteerFormData.experience || '' : '' %></textarea>
+                                    <label for="volunteerExperience">Previous Volunteer Experience (Optional)</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="volunteerAdditionalInfo" name="additionalInfo" 
+                                              placeholder="Additional information" style="height: 80px"><%= typeof volunteerFormData !== 'undefined' ? volunteerFormData.additionalInfo || '' : '' %></textarea>
+                                    <label for="volunteerAdditionalInfo">Additional Information (Optional)</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary py-3 px-4" type="submit">
+                                    Register as Volunteer
+                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                        <i class="fa fa-heart"></i>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact Forms Section End -->
+
+<!-- FAQ Section Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">FAQ</div>
+            <h1 class="display-6 mb-4">Frequently Asked Questions</h1>
+            <p>Find answers to common questions about ATCC and our community</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="accordion wow fadeInUp" data-wow-delay="0.1s" id="faqAccordion">
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header" id="faq1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                                What is ATCC and what does it stand for?
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                ATCC stands for Association of Tamilnadu Canadian Community. We are a nonprofit, volunteer-led organization founded in May 2023, dedicated to uniting and empowering the Tamil community across Canada through cultural preservation, community support, and meaningful events.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header" id="faq2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                How can I become a volunteer with ATCC?
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                You can register as a volunteer by filling out the volunteer registration form on this page. We have 13 different teams covering areas like event management, social media, IT, legal advocacy, and more. Choose the area that interests you most, and we'll connect you with the relevant team lead.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header" id="faq3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                What types of events does ATCC organize?
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                ATCC organizes a wide variety of events including cultural celebrations, career fairs, networking meetups, sports tournaments, family BBQs, and educational workshops. We've hosted events like IPL screenings, Ramadan iftars, women's empowerment webinars, and partnered with major concerts like Yuvan Live and Bharadwaj Concert.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header" id="faq4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                Is ATCC only for people from Tamil Nadu?
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                While ATCC was founded to serve the Tamil community from Tamil Nadu, we welcome all Tamil speakers and anyone interested in Tamil culture. Our events and programs are open to families, students, professionals, newcomers, and anyone who wants to be part of our vibrant community.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header" id="faq5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                How can I stay updated on ATCC events and activities?
+                            </button>
+                        </h2>
+                        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Follow us on our social media platforms: Facebook, Instagram (5,000+ followers), WhatsApp groups organized by city/province, and YouTube. You can also subscribe to our newsletter and join our city-specific WhatsApp groups to get real-time updates about events in your area.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header" id="faq6">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                What support does ATCC provide to newcomers?
+                            </button>
+                        </h2>
+                        <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="faq6" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                We provide comprehensive newcomer support including settlement assistance, networking opportunities, accommodation help, legal resources, career guidance, and connections to local Tamil community groups. Our volunteers help newcomers navigate the Canadian system and find their place in the community.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header" id="faq7">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                Are ATCC events free to attend?
+                            </button>
+                        </h2>
+                        <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="faq7" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Most of our community events are free or offered at minimal cost to ensure accessibility for all community members. Some larger events or workshops may have a small registration fee to cover costs. We always strive to keep our events affordable and inclusive for everyone.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header" id="faq8">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                How can businesses partner with ATCC?
+                            </button>
+                        </h2>
+                        <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="faq8" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                We welcome partnerships with businesses that share our vision of empowering the Tamil community. We offer sponsorship opportunities for events, business directory listings, networking opportunities, and promotional platforms. Contact our Fundraising and Sponsorship team for partnership opportunities.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header" id="faq9">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                                What is the time commitment for volunteers?
+                            </button>
+                        </h2>
+                        <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="faq9" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Volunteer commitment is flexible and depends on your availability and chosen role. Some volunteers contribute a few hours monthly, while others are more actively involved in specific projects or events. We appreciate any level of contribution and work with your schedule to make volunteering manageable and enjoyable.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header" id="faq10">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                                How can I suggest an event or initiative for ATCC?
+                            </button>
+                        </h2>
+                        <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="faq10" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                We love hearing ideas from our community! You can suggest events or initiatives by using our general contact form, reaching out to our Cultural & Event Management team, or contacting us directly at info@atcccanada.ca. We review all suggestions and work to implement ideas that align with our mission and community needs.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FAQ Section End -->
+
+<%- include('partials/footer') %>
