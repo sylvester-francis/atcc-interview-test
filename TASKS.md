@@ -28,6 +28,7 @@
   - [x] Volunteers Registration
   - [x] Social media icons (FB, IG, WhatsApp, YouTube)
 
+
 - [x] **Footer (across all pages)**
   - [x] Quick Links
   - [x] Email (<info@atcccanada.ca>)
